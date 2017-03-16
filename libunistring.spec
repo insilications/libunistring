@@ -6,7 +6,7 @@
 #
 Name     : libunistring
 Version  : 0.9.7
-Release  : 8
+Release  : 9
 URL      : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
 Source0  : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
 Source99 : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz.sig
@@ -78,9 +78,9 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489679065
+export SOURCE_DATE_EPOCH=1489680048
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make V=1
 
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -88,17 +88,17 @@ export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
 %configure --disable-static    --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
-make V=1  %{?_smp_mflags}
+make V=1
 popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1489679065
+export SOURCE_DATE_EPOCH=1489680048
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

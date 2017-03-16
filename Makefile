@@ -1,5 +1,5 @@
 PKG_NAME := libunistring
-URL := http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.6.tar.xz
+URL := https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
 
 
 include ../common/Makefile.common

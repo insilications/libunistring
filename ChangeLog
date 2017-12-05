@@ -1,3 +1,93 @@
+2017-11-30  Daiki Ueno  <ueno@gnu.org>
+
+	* version.sh: Bump version number and date.
+	* README: Update version.
+	* NEWS: Mention 0.9.8 changes.
+	* lib/Makefile.am (LTV_CURRENT, LTV_AGE): Bump for
+	uc_grapheme_breaks.
+
+2017-11-27  Daiki Ueno  <ueno@gnu.org>
+
+	uniwbrk: Define new word break property values
+	* doc/uniwbrk.texi (Word break property): Document WBP_RI, WBP_DQ,
+	WBP_SQ, WBP_HL, WBP_ZWJ, WBP_EB, WBP_EM, WBP_GAZ, and WBP_EBG.
+
+2017-11-27  Daiki Ueno  <ueno@gnu.org>
+
+	unigbrk: Import new module unigbrk/uc-grapheme-breaks
+	* autogen.sh (GNULIB_MODULES): Pull unigbrk/uc-grapheme-breaks.
+	* doc/unigbrk.texi (Grapheme cluster breaks in a string): Mention
+	the limitations of *_grapheme_next and *_grapheme_prev functions
+	and suggest *_grapheme_breaks instead.
+	(Grapheme cluster break property): Document newly added
+	properties; mention the limitations of uc_is_grapheme_break and
+	suggest to use uc_grapheme_breaks instead.
+
+2017-11-18  Bruno Haible  <bruno@clisp.org>
+
+	Clarify the effect of uc_canonical_decomposition.
+	Prompted by a report by DaeHyun Sung <sungdh86@gmail.com>.
+	* doc/uninorm.texi (Decomposition of characters): Clarify.
+	* doc/libunistring.texi: Bump copyright year.
+
+2017-10-21  Bruno Haible  <bruno@clisp.org>
+
+	Upgrade to newer libtool.
+	* m4/libtool.m4: Update from libtool-2.4.6, with modifications.
+	2017-10-21  Bruno Haible  <bruno@clisp.org>
+		Fix -export-symbols and -export-symbols-regex support on
+		Solaris 11.3.
+		* m4/libtool.m4 (_LT_CMD_GLOBAL_SYMBOLS): Adjust symcode for
+		Solaris.
+	2009-04-23  Bruno Haible  <bruno@clisp.org>
+		Fix recognition of "nm" command.
+		* m4/libtool.m4 (LT_PATH_NM): Try "nm" program also when
+		compiling for mingw in a cygwin environment.
+	2008-04-06  Bruno Haible  <bruno@clisp.org>
+		* m4/libtool.m4 (LT_INIT): When setting LIBTOOL, use
+		CONFIG_SHELL; don't assume that the Makefile.in will set SHELL
+		to ${CONFIG_SHELL}.
+	* m4/ltoptions.m4: Likewise.
+	* m4/ltsugar.m4: Likewise.
+	* m4/ltversion.m4: Likewise.
+	* m4/lt~obsolete.m4: Likewise.
+	* build-aux/ltmain.sh: Likewise.
+
+2017-07-15  Bruno Haible  <bruno@clisp.org>
+
+	Get rid of autom4te.cache directory (left over from autoconf, automake).
+	* autogen.sh: Remove autom4te.cache directory.
+
+2017-06-20  Bruno Haible  <bruno@clisp.org>
+
+	Avoid collision between the generated <unistring/stdbool.h> and the
+	platform's original <stdbool.h>.
+	Reported by Dennis Clarke <dclarke@blastwave.org> in
+	<https://lists.gnu.org/archive/html/bug-gettext/2017-06/msg00022.html>.
+	* lib/stdbool.mini.h: Update from stdbool.in.h from current gnulib. Use
+	compiler dependent conditionals to determine whether <stdbool.h> should
+	be included.
+
+2017-01-10  Bruno Haible  <bruno@clisp.org>
+
+	Modernize URLs.
+	* README: Prefer https over http or ftp URLs.
+	* DEPENDENCIES: Likewise.
+
+2016-12-26  Bruno Haible  <bruno@clisp.org>
+
+	Clarify which version of texinfo.tex is used.
+	* autogen.sh (TEXINFO_VERSION): New variable.
+
+2016-12-10  Bruno Haible  <bruno@clisp.org>
+
+	Make the generated <unistring/stdint.h> work for GCC >= 4.5
+	when GCC is not the system's default compiler.
+	* lib/Makefile.am (unistring/stdint.h): When the compiler is
+	GCC >= 4.5, include its <stdint.h> file.
+	Reported by Marcin Cieślak and analyzed by Krzysztof Malinowski
+	at <https://savannah.gnu.org/bugs/?45783>.
+
 2016-12-02  Daiki Ueno  <ueno@gnu.org>
 
 	* version.sh: Bump version number and date.

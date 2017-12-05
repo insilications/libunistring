@@ -29,6 +29,7 @@ libunistring.so.2:libunistring_gl_uninorm_decompose_merge_sort_fromto
 libunistring.so.2:libunistring_gl_uninorm_decompose_merge_sort_inplace
 libunistring.so.2:libunistring_glthread_once_singlethreaded
 libunistring.so.2:libunistring_glthread_recursive_lock_init_multithreaded
+libunistring.so.2:libunistring_glthread_rwlock_init_for_glibc
 libunistring.so.2:libunistring_hard_locale
 libunistring.so.2:libunistring_iconveh_close
 libunistring.so.2:libunistring_iconveh_open
@@ -387,6 +388,7 @@ libunistring.so.2:uc_general_category_byname
 libunistring.so.2:uc_general_category_long_name
 libunistring.so.2:uc_general_category_name
 libunistring.so.2:uc_general_category_or
+libunistring.so.2:uc_grapheme_breaks
 libunistring.so.2:uc_graphemeclusterbreak_property
 libunistring.so.2:uc_is_alnum
 libunistring.so.2:uc_is_alpha

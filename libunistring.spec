@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xD605848ED7E69871 (ueno@gnu.org)
 #
 Name     : libunistring
-Version  : 0.9.7
-Release  : 10
-URL      : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
-Source0  : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
-Source99 : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz.sig
+Version  : 0.9.8
+Release  : 11
+URL      : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
+Source0  : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
+Source99 : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GFDL-1.3 GPL-3.0 LGPL-3.0
+License  : GPL-3.0 LGPL-3.0
 Requires: libunistring-lib
 Requires: libunistring-doc
 BuildRequires : gcc-dev32
@@ -71,14 +71,17 @@ lib32 components for the libunistring package.
 
 
 %prep
-%setup -q -n libunistring-0.9.7
+%setup -q -n libunistring-0.9.8
 pushd ..
-cp -a libunistring-0.9.7 build32
+cp -a libunistring-0.9.8 build32
 popd
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1489680048
+export SOURCE_DATE_EPOCH=1512484889
 %configure --disable-static
 make V=1
 
@@ -94,11 +97,11 @@ popd
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1489680048
+export SOURCE_DATE_EPOCH=1512484889
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -139,9 +142,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libunistring.so.2
-/usr/lib64/libunistring.so.2.0.0
+/usr/lib64/libunistring.so.2.1.0
 
 %files lib32
 %defattr(-,root,root,-)
 /usr/lib32/libunistring.so.2
-/usr/lib32/libunistring.so.2.0.0
+/usr/lib32/libunistring.so.2.1.0

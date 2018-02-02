@@ -6,7 +6,7 @@
 #
 Name     : libunistring
 Version  : 0.9.8
-Release  : 11
+Release  : 12
 URL      : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
 Source0  : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
 Source99 : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz.sig

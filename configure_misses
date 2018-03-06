@@ -1,38 +1,18 @@
 Configure miss: __fseterr
-Configure miss: getprogname
-Configure miss: getexecname
 Configure miss: pthread_sigmask
 Configure miss: crtdefs.h
-Configure miss: xlocale.h
-Configure miss: whether wint_t is too small
-Configure miss: whether <limits.h> defines MIN and MAX
 Configure miss: whether to activate relocatable installation
-Configure miss: whether stdint.h predates C++11
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: whether the C locale is free of encoding errors
 Configure miss: a turkish Unicode locale
-Configure miss: whether __argv is declared
 Configure miss: whether pthread_sigmask is only a macro
 Configure miss: a traditional Arabic locale
-Configure miss: i686-generic-linux-gnu-objdump
-Configure miss: i686-generic-linux-gnu-dlltool
-Configure miss: i686-generic-linux-gnu-strip
-Configure miss: i686-generic-linux-gnu-mt
 Configure miss: i686-generic-linux-gnu-windres
 Configure miss: __fseterr
-Configure miss: getprogname
-Configure miss: getexecname
 Configure miss: pthread_sigmask
 Configure miss: crtdefs.h
-Configure miss: xlocale.h
-Configure miss: whether wint_t is too small
-Configure miss: whether <limits.h> defines MIN and MAX
 Configure miss: whether to activate relocatable installation
-Configure miss: whether stdint.h predates C++11
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: whether the C locale is free of encoding errors
 Configure miss: a turkish Unicode locale
-Configure miss: whether __argv is declared
 Configure miss: whether INT64_MAX == LONG_MAX
 Configure miss: whether UINT64_MAX == ULONG_MAX
 Configure miss: whether pthread_sigmask is only a macro

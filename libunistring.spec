@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD605848ED7E69871 (ueno@gnu.org)
 #
 Name     : libunistring
-Version  : 0.9.8
-Release  : 12
-URL      : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
-Source0  : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz
-Source99 : https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.8.tar.xz.sig
+Version  : 0.9.9
+Release  : 13
+URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
@@ -71,9 +71,9 @@ lib32 components for the libunistring package.
 
 
 %prep
-%setup -q -n libunistring-0.9.8
+%setup -q -n libunistring-0.9.9
 pushd ..
-cp -a libunistring-0.9.8 build32
+cp -a libunistring-0.9.9 build32
 popd
 
 %build
@@ -81,9 +81,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512484889
+export SOURCE_DATE_EPOCH=1520311763
 %configure --disable-static
-make V=1
+make
 
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -91,7 +91,7 @@ export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
 %configure --disable-static    --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
-make V=1
+make
 popd
 %check
 export LANG=C
@@ -101,7 +101,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1512484889
+export SOURCE_DATE_EPOCH=1520311763
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

@@ -5,16 +5,15 @@
 # Source0 file verified with key 0xD605848ED7E69871 (ueno@gnu.org)
 #
 Name     : libunistring
-Version  : 0.9.9
-Release  : 14
-URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz
-Source99 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.9.tar.xz.sig
+Version  : 0.9.10
+Release  : 15
+URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
 Requires: libunistring-lib
-Requires: libunistring-doc
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
@@ -71,9 +70,9 @@ lib32 components for the libunistring package.
 
 
 %prep
-%setup -q -n libunistring-0.9.9
+%setup -q -n libunistring-0.9.10
 pushd ..
-cp -a libunistring-0.9.9 build32
+cp -a libunistring-0.9.10 build32
 popd
 
 %build
@@ -81,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1520311763
+export SOURCE_DATE_EPOCH=1527676953
 %configure --disable-static
 make
 
@@ -101,7 +100,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1520311763
+export SOURCE_DATE_EPOCH=1527676953
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

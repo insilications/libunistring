@@ -6,19 +6,21 @@
 #
 Name     : libunistring
 Version  : 0.9.10
-Release  : 16
+Release  : 17
 URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
-Source99 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz.sig
+Source1 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
-Requires: libunistring-lib
+Requires: libunistring-lib = %{version}-%{release}
+Requires: libunistring-license = %{version}-%{release}
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : glibc-locale
 
 %description
 GNU LIBUNISTRING - Unicode string library
@@ -28,8 +30,9 @@ for manipulating C strings according to the Unicode standard.
 %package dev
 Summary: dev components for the libunistring package.
 Group: Development
-Requires: libunistring-lib
-Provides: libunistring-devel
+Requires: libunistring-lib = %{version}-%{release}
+Provides: libunistring-devel = %{version}-%{release}
+Requires: libunistring = %{version}-%{release}
 
 %description dev
 dev components for the libunistring package.
@@ -38,8 +41,8 @@ dev components for the libunistring package.
 %package dev32
 Summary: dev32 components for the libunistring package.
 Group: Default
-Requires: libunistring-lib32
-Requires: libunistring-dev
+Requires: libunistring-lib32 = %{version}-%{release}
+Requires: libunistring-dev = %{version}-%{release}
 
 %description dev32
 dev32 components for the libunistring package.
@@ -56,6 +59,7 @@ doc components for the libunistring package.
 %package lib
 Summary: lib components for the libunistring package.
 Group: Libraries
+Requires: libunistring-license = %{version}-%{release}
 
 %description lib
 lib components for the libunistring package.
@@ -64,9 +68,18 @@ lib components for the libunistring package.
 %package lib32
 Summary: lib32 components for the libunistring package.
 Group: Default
+Requires: libunistring-license = %{version}-%{release}
 
 %description lib32
 lib32 components for the libunistring package.
+
+
+%package license
+Summary: license components for the libunistring package.
+Group: Default
+
+%description license
+license components for the libunistring package.
 
 
 %prep
@@ -79,29 +92,43 @@ popd
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1527676953
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569534055
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make
 
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-export CFLAGS="$CFLAGS -m32"
-export CXXFLAGS="$CXXFLAGS -m32"
-export LDFLAGS="$LDFLAGS -m32"
+export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
+export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
+export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
+export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 %configure --disable-static    --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make
 popd
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
+cd ../build32;
+make VERBOSE=1 V=1 check || :
 
 %install
-export SOURCE_DATE_EPOCH=1527676953
+export SOURCE_DATE_EPOCH=1569534055
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/libunistring
+cp COPYING %{buildroot}/usr/share/package-licenses/libunistring/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/libunistring/COPYING.LIB
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -118,7 +145,15 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/unicase.h
+/usr/include/uniconv.h
+/usr/include/unictype.h
+/usr/include/unigbrk.h
+/usr/include/unilbrk.h
+/usr/include/uniname.h
+/usr/include/uninorm.h
+/usr/include/unistdio.h
+/usr/include/unistr.h
 /usr/include/unistring/cdefs.h
 /usr/include/unistring/iconveh.h
 /usr/include/unistring/inline.h
@@ -127,6 +162,9 @@ popd
 /usr/include/unistring/stdint.h
 /usr/include/unistring/version.h
 /usr/include/unistring/woe32dll.h
+/usr/include/unitypes.h
+/usr/include/uniwbrk.h
+/usr/include/uniwidth.h
 /usr/lib64/libunistring.so
 
 %files dev32
@@ -134,7 +172,7 @@ popd
 /usr/lib32/libunistring.so
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/libunistring/*
 %doc /usr/share/info/*
 
@@ -147,3 +185,8 @@ popd
 %defattr(-,root,root,-)
 /usr/lib32/libunistring.so.2
 /usr/lib32/libunistring.so.2.1.0
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libunistring/COPYING
+/usr/share/package-licenses/libunistring/COPYING.LIB

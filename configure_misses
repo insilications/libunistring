@@ -1,18 +1,18 @@
+Configure miss: windres
 Configure miss: __fseterr
 Configure miss: pthread_sigmask
 Configure miss: crtdefs.h
 Configure miss: whether to activate relocatable installation
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: a turkish Unicode locale
 Configure miss: whether pthread_sigmask is only a macro
 Configure miss: a traditional Arabic locale
 Configure miss: i686-generic-linux-gnu-windres
+Configure miss: windres
 Configure miss: __fseterr
 Configure miss: pthread_sigmask
 Configure miss: crtdefs.h
 Configure miss: whether to activate relocatable installation
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: a turkish Unicode locale
 Configure miss: whether INT64_MAX == LONG_MAX
 Configure miss: whether UINT64_MAX == ULONG_MAX
 Configure miss: whether pthread_sigmask is only a macro

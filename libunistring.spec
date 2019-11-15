@@ -6,13 +6,14 @@
 #
 Name     : libunistring
 Version  : 0.9.10
-Release  : 17
+Release  : 18
 URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 Source1 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
+Requires: libunistring-info = %{version}-%{release}
 Requires: libunistring-lib = %{version}-%{release}
 Requires: libunistring-license = %{version}-%{release}
 BuildRequires : gcc-dev32
@@ -51,9 +52,18 @@ dev32 components for the libunistring package.
 %package doc
 Summary: doc components for the libunistring package.
 Group: Documentation
+Requires: libunistring-info = %{version}-%{release}
 
 %description doc
 doc components for the libunistring package.
+
+
+%package info
+Summary: info components for the libunistring package.
+Group: Default
+
+%description info
+info components for the libunistring package.
 
 
 %package lib
@@ -84,6 +94,7 @@ license components for the libunistring package.
 
 %prep
 %setup -q -n libunistring-0.9.10
+cd %{_builddir}/libunistring-0.9.10
 pushd ..
 cp -a libunistring-0.9.10 build32
 popd
@@ -93,7 +104,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569534055
+export SOURCE_DATE_EPOCH=1573790972
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -124,11 +135,11 @@ cd ../build32;
 make VERBOSE=1 V=1 check || :
 
 %install
-export SOURCE_DATE_EPOCH=1569534055
+export SOURCE_DATE_EPOCH=1573790972
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libunistring
-cp COPYING %{buildroot}/usr/share/package-licenses/libunistring/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/libunistring/COPYING.LIB
+cp %{_builddir}/libunistring-0.9.10/COPYING %{buildroot}/usr/share/package-licenses/libunistring/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/libunistring-0.9.10/COPYING.LIB %{buildroot}/usr/share/package-licenses/libunistring/e7d563f52bf5295e6dba1d67ac23e9f6a160fab9
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -174,7 +185,10 @@ popd
 %files doc
 %defattr(0644,root,root,0755)
 %doc /usr/share/doc/libunistring/*
-%doc /usr/share/info/*
+
+%files info
+%defattr(0644,root,root,0755)
+/usr/share/info/libunistring.info
 
 %files lib
 %defattr(-,root,root,-)
@@ -188,5 +202,5 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libunistring/COPYING
-/usr/share/package-licenses/libunistring/COPYING.LIB
+/usr/share/package-licenses/libunistring/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+/usr/share/package-licenses/libunistring/e7d563f52bf5295e6dba1d67ac23e9f6a160fab9

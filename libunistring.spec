@@ -6,7 +6,7 @@
 #
 Name     : libunistring
 Version  : 0.9.10
-Release  : 18
+Release  : 19
 URL      : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 Source1 : https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz.sig

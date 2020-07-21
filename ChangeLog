@@ -1,3 +1,187 @@
+2020-05-07  Daiki Ueno  <ueno@gnu.org>
+
+	build: Update after gnulib changed
+	In the latest Gnulib, the definition of _GL_UNUSED_PARAMETER is
+	expanded at configure time of the consumer project.  Let's include
+	only the fallback definition in <unistring/cdefs.h>.
+	Suggested by Dmitry Baryshkov <dbaryshkov@gmail.com> in:
+	<https://lists.gnu.org/archive/html/bug-libunistring/2020-05/msg00001.html>.
+	* lib/Makefile.am (unistring/cdefs.h): Don't generate the file.
+	* lib/unistring/cdefs.h: Include the expanded form instead of ...
+	* lib/unistring/cdefs.in.h: ... this.
+	* gnulib-m4/.gitignore, gnulib-m4/gnulib-cache.m4, lib/.gitignore,
+	tests/.gitignore: Updated.
+
+2019-12-23  Bruno Haible  <bruno@clisp.org>
+
+	doc: Update description of locale_charset.
+	* doc/uniconv.texi (uniconv.h): Fix reference to config.charset, which
+	was removed on 2018-05-19.
+
+2019-12-22  Bruno Haible  <bruno@clisp.org>
+
+	build: Don't erase the .sym file if 'sed' is not GNU sed.
+	* lib/Makefile.am (libunistring.sym): Test the exit status of the
+	declared.sh command. Preserve the existing libunistring.sym if it
+	failed.
+
+2019-12-22  Bruno Haible  <bruno@clisp.org>
+
+	build: Update after gnulib changed.
+	* lib/Makefile.am (libunistring.sym): Don't rename the
+	gl_get_setlocale_null_lock function.
+	* NEWS: Document the fixed multithread-safety bugs:
+	  2019-12-18  Bruno Haible  <bruno@clisp.org>
+	      hard-locale: Make multithread-safe.
+	      This fix impacts mbrtowc on Cygwin and Haiku.
+	  2019-12-17  Bruno Haible  <bruno@clisp.org>
+	      localcharset: Fix multithread-safety bug on Windows and OS/2.
+
+2019-12-22  Bruno Haible  <bruno@clisp.org>
+
+	build: Fix spurious error message in 'doc'.
+	* doc/Makefile.am (RM): New variable.
+
+2019-12-19  Bruno Haible  <bruno@clisp.org>
+
+	build: Remove generated lib/uni*.h files from the tarball.
+	* lib/Makefile.am (nodist_include_HEADERS): New variable.
+	(nobase_include_HEADERS): Remove the headers files listed in
+	nodist_include_HEADERS.
+
+2019-09-01  Bruno Haible  <bruno@clisp.org>
+
+	build: Explain how to avoid skipped tests.
+	* HACKING: Explain which locales to install, to avoid skipped tests.
+
+2019-09-01  Bruno Haible  <bruno@clisp.org>
+
+	build: Add support for shallow-cloning of subdirectories.
+	* gitsub.sh (func_usage): Document allowed git options with 'git pull'.
+	(func_pull): Accept GIT_OPTIONS argument.
+	(pull): Parse git options before complaining about too many arguments.
+	Pass the git options to func_pull.
+
+2019-08-18  Bruno Haible  <bruno@clisp.org>
+
+	build: Don't use an obsolete libtool macro.
+	* m4/exported.m4 (gt_GLOBAL_SYMBOL_PIPE): Require
+	_LT_CMD_GLOBAL_SYMBOLS, not AC_LIBTOOL_SYS_GLOBAL_SYMBOL_PIPE.
+
+2019-06-30  Bruno Haible  <bruno@clisp.org>
+
+	build: Fix build errors with MSVC.
+	* lib/exported.sh.in: Remove one level of eval.
+	* lib/Makefile.am (config.h): Redirect compiler output to stderr.
+	Remove symbols that contain an '@'.
+
+2019-05-11  Bruno Haible  <bruno@clisp.org>
+
+	Update bug reporting instructions.
+	* README: Tell users to report bugs in the bug tracker or by email.
+	* doc/libunistring.texi (Reporting problems): Likewise.
+
+2019-04-01  Bruno Haible  <bruno@clisp.org>
+
+	build: Separate git operations from build operations.
+	* gitsub.sh: New file, from gnulib.
+	* .gitmodules: New file.
+	* autogen.sh: Remove all git operations. Look at GNULIB_SRCDIR
+	environment variable. Ignore the GNULIB_TOOL environment variable.
+	* HACKING: Explain when to use gitsub.sh.
+
+2019-03-13  Bruno Haible  <bruno@clisp.org>
+
+	build: Update Windows support.
+	* lib/libunistring.rc: Update.
+
+2019-02-13  Bruno Haible  <bruno@clisp.org>
+
+	doc: Assume that the texinfo sources are in the source dir.
+	* doc/Makefile.am (stamp-vti, libunistring.html, libunistring_toc.html):
+	Lookup libunistring.texi in $(srcdir).
+
+2019-02-13  Bruno Haible  <bruno@clisp.org>
+
+	doc: Fix hyperlinks to table of contents in HTML doc.
+	Reported by Akim Demaille <akim.demaille@gmail.com>.
+	* doc/Makefile.am (libunistring_toc.html): Replace references to
+	libunistring.html with references to libunistring_toc.html.
+
+2019-02-13  Bruno Haible  <bruno@clisp.org>
+
+	doc: Make function declarations easier to read.
+	* doc/uni*.texi: Inside the argument list of function declarations, use
+	no-break spaces instead of spaces, except directly after a comma.
+	* doc/libunistring.texi: Bump copyright year.
+
+2019-02-13  Bruno Haible  <bruno@clisp.org>
+
+	build: Put the .sym file in the source directory.
+	* lib/Makefile.am (libunistring.sym): Generate in the source directory.
+	(config.h): Update rule.
+
+2019-02-13  Bruno Haible  <bruno@clisp.org>
+
+	doc: Simplify the title page.
+	* doc/libunistring.texi (titlepage): Remove redundant subtitle.
+
+2019-02-10  Bruno Haible  <bruno@clisp.org>
+
+	Update licenses.
+	* doc/fdl.texi: Update from gnulib.
+	* doc/gpl.texi: Likewise.
+	* doc/lgpl.texi: Likewise.
+
+2019-02-10  Bruno Haible  <bruno@clisp.org>
+
+	Use a newer texinfo.tex.
+	* autogen.sh (TEXINFO_VERSION): Bump to 6.5.
+	Fetch texinfo.tex from the texinfo git repository instead of the
+	obsolete texinfo CVS repository.
+
+2019-02-04  Bruno Haible  <bruno@clisp.org>
+
+	Remove left-over empty directories in 'make distclean'.
+	* lib/Makefile.am (DISTCLEANDIRS, DISTCLEANDIRS_NOT_IN_SRCDIR): New
+	variables.
+	(distclean-local): New target.
+	* tests/Makefile.am (distclean-local): New target.
+
+2019-02-04  Bruno Haible  <bruno@clisp.org>
+
+	Move run-test to gnulib.
+	* autogen.sh: Copy build-aux/run-test from gnulib.
+	* build-aux/run-test: Remove file.
+
+2019-02-03  Bruno Haible  <bruno@clisp.org>
+
+	Move declared.sh to gnulib.
+	* autogen.sh: Copy lib/declared.sh from gnulib.
+	* lib/declared.sh: Remove file.
+
+2019-01-28  Bruno Haible  <bruno@clisp.org>
+
+	Accommodate a shell that is not in /bin/sh.
+	* autogen.sh: Patch build-aux/test-driver with a patch from gnulib.
+
+2018-10-23  Bruno Haible  <bruno@clisp.org>
+
+	Support for per-thread locales on systems with HAVE_NAMELESS_LOCALES.
+	This allows 'uc_locale_language' to return the right locale name for
+	locales created by newlocale() or duplocale() on such systems, if and
+	only if the 'newlocale', 'duplocale' overrides from gnulib are used.
+	* lib/Makefile.am (config.h): Don't hide symbols that start with
+	'libintl_locale'.
+
+2018-09-17  Bruno Haible  <bruno@clisp.org>
+
+	Remove the 'fixaclocal' auxiliary script.
+	* autogen.sh: Don't invoke fixaclocal.
+	* Makefile.am (ACLOCAL): Remove override.
+	(EXTRA_DIST): Remove build-aux/fixaclocal.
+	* build-aux/fixaclocal: Remove file.
+
 2018-05-17  Bruno Haible  <bruno@clisp.org>
 
 	Prepare for 0.9.10 release.

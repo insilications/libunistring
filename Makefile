@@ -1,5 +1,5 @@
 PKG_NAME := libunistring
-URL = https://mirrors.kernel.org/gnu/libunistring/libunistring-0.9.10.tar.xz
-ARCHIVES = 
+URL = https://git.savannah.gnu.org/git/libunistring.git
+ARCHIVES = file:///insilications/build/clearlinux/packages/libunistring/gnulib.tar.bz2 gnulib/
 
 include ../common/Makefile.common

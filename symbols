@@ -25,7 +25,6 @@ libunistring.so.2:libunistring_gl_locale_name_posix
 libunistring.so.2:libunistring_gl_locale_name_thread
 libunistring.so.2:libunistring_gl_unicase_special_lookup
 libunistring.so.2:libunistring_gl_uninorm_compose_lookup
-libunistring.so.2:libunistring_gl_uninorm_decompose_merge_sort_fromto
 libunistring.so.2:libunistring_gl_uninorm_decompose_merge_sort_inplace
 libunistring.so.2:libunistring_glthread_once_singlethreaded
 libunistring.so.2:libunistring_glthread_recursive_lock_init_multithreaded
@@ -48,6 +47,8 @@ libunistring.so.2:libunistring_mmalloca
 libunistring.so.2:libunistring_printf_frexp
 libunistring.so.2:libunistring_printf_frexpl
 libunistring.so.2:libunistring_rpl_mbrtowc
+libunistring.so.2:libunistring_setlocale_null
+libunistring.so.2:libunistring_setlocale_null_r
 libunistring.so.2:libunistring_str_cd_iconveh
 libunistring.so.2:libunistring_str_iconveh
 libunistring.so.2:libunistring_str_iconveha

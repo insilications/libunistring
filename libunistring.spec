@@ -5,10 +5,10 @@
 %define keepstatic 1
 Name     : libunistring
 Version  : 0.9.10
-Release  : 20
+Release  : 25
 URL      : file:///insilications/build/clearlinux/packages/libunistring/libunistring-v0.9.10.zip
 Source0  : file:///insilications/build/clearlinux/packages/libunistring/libunistring-v0.9.10.zip
-Source1  : file:///insilications/build/clearlinux/packages/libunistring/gnulib.tar.bz2
+Source1  : file:///insilications/build/clearlinux/packages/libunistring/gnulib-v0.1.zip
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 GPL-3.0 LGPL-2.1
@@ -74,12 +74,10 @@ staticdev components for the libunistring package.
 %prep
 %setup -q -n libunistring-v0.9.10
 cd %{_builddir}
-mkdir -p gnulib.tar
-cd gnulib.tar
-tar xf %{_sourcedir}/gnulib.tar.bz2
+unzip -q %{_sourcedir}/gnulib-v0.1.zip
 cd %{_builddir}/libunistring-v0.9.10
 mkdir -p gnulib/
-cp -r %{_builddir}/gnulib.tar/* %{_builddir}/libunistring-v0.9.10/gnulib/
+cp -r %{_builddir}/gnulib-v0.1/* %{_builddir}/libunistring-v0.9.10/gnulib/
 
 %build
 ## build_prepend content
@@ -96,7 +94,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595301462
+export SOURCE_DATE_EPOCH=1595567932
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -135,7 +133,7 @@ unset no_proxy
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1595301462
+export SOURCE_DATE_EPOCH=1595567932
 rm -rf %{buildroot}
 %make_install
 

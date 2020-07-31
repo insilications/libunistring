@@ -1,2 +1,1 @@
 --enable-shared --enable-static --disable-maintainer-mode
-#make autospec URL=https://git.savannah.gnu.org/git/libunistring.git FROM_GIT=1 FROM_BRANCH=master ARCHIVES="file:///insilications/build/clearlinux/packages/libunistring/gnulib.tar.bz2 gnulib/"

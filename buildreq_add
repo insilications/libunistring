@@ -8,3 +8,6 @@ glibc-locale
 gperf
 texinfo
 findutils
+openssl
+openssl-dev
+openssl-staticdev

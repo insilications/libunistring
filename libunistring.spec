@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : libunistring
 Version  : 0.9.10
-Release  : 28
+Release  : 29
 URL      : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Source0  : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Summary  : Library to manipulate Unicode strings
@@ -110,10 +110,10 @@ staticdev32 components for the libunistring package.
 
 
 %prep
-%setup -q -n clone_archive
-cd %{_builddir}/clone_archive
+%setup -q -n libunistring
+cd %{_builddir}/libunistring
 pushd ..
-cp -a clone_archive build32
+cp -a libunistring build32
 popd
 
 %build
@@ -131,7 +131,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598407596
+export SOURCE_DATE_EPOCH=1598735059
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -159,6 +159,9 @@ export RANLIB=gcc-ranlib
 export NM=gcc-nm
 #export CCACHE_DISABLE=1
 ## altflags_pgo end
+##
+%define _lto_cflags 1
+##
 export CFLAGS="${CFLAGS_GENERATE}"
 export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
@@ -198,9 +201,9 @@ pushd ../build32/
 #echo "AM_MAINTAINER_MODE([disable])" >> configure.ac
 #find . -type f -name 'config.status' -exec touch {} \;
 ## build_prepend end
-export CFLAGS="-g -O3 -fuse-linker-plugin -pipe"
-export CXXFLAGS="-g -O3 -fuse-linker-plugin -fvisibility-inlines-hidden -pipe"
-export LDFLAGS="-g -O3 -fuse-linker-plugin -pipe"
+export CFLAGS="-g -O2 -fuse-linker-plugin -pipe"
+export CXXFLAGS="-g -O2 -fuse-linker-plugin -fvisibility-inlines-hidden -pipe"
+export LDFLAGS="-g -O2 -fuse-linker-plugin -pipe"
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -229,7 +232,7 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1598407596
+export SOURCE_DATE_EPOCH=1598735059
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

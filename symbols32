@@ -24,7 +24,6 @@ libunistring.so.2:libunistring_gl_locale_name_environ
 libunistring.so.2:libunistring_gl_locale_name_posix
 libunistring.so.2:libunistring_gl_locale_name_thread
 libunistring.so.2:libunistring_gl_unicase_special_lookup
-libunistring.so.2:libunistring_gl_uninorm_compose_lookup
 libunistring.so.2:libunistring_gl_uninorm_decompose_merge_sort_inplace
 libunistring.so.2:libunistring_glthread_once_singlethreaded
 libunistring.so.2:libunistring_glthread_recursive_lock_init_multithreaded
@@ -62,17 +61,9 @@ libunistring.so.2:libunistring_u8_casemap
 libunistring.so.2:libunistring_u8_is_invariant
 libunistring.so.2:libunistring_u8_printf_parse
 libunistring.so.2:libunistring_u_printf_fetchargs
-libunistring.so.2:libunistring_uc_bidi_class_lookup
-libunistring.so.2:libunistring_uc_combining_class_lookup
 libunistring.so.2:libunistring_uc_compat_decomposition
-libunistring.so.2:libunistring_uc_general_category_lookup
 libunistring.so.2:libunistring_uc_is_case_ignorable
 libunistring.so.2:libunistring_uc_is_cased
-libunistring.so.2:libunistring_uc_joining_group_lookup
-libunistring.so.2:libunistring_uc_joining_type_lookup
-libunistring.so.2:libunistring_uc_locale_languages_lookup
-libunistring.so.2:libunistring_uc_property_lookup
-libunistring.so.2:libunistring_uc_script_lookup
 libunistring.so.2:libunistring_uc_tocasefold
 libunistring.so.2:libunistring_ulc_printf_parse
 libunistring.so.2:libunistring_uniconv_register_autodetect

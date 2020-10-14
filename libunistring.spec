@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : libunistring
 Version  : 0.9.10
-Release  : 30
+Release  : 31
 URL      : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Source0  : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Summary  : Library to manipulate Unicode strings
@@ -132,7 +132,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602508516
+export SOURCE_DATE_EPOCH=1602699877
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -178,7 +178,7 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-%autogen --enable-shared --enable-static --disable-man --disable-docs
+%autogen --enable-shared --enable-static
 ## make_prepend content
 #find . -type f -name 'Makefile*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
 #find . -type f -name 'libtool*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
@@ -193,7 +193,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-%autogen  --enable-shared --enable-static --disable-man --disable-docs
+%autogen  --enable-shared --enable-static
 ## make_prepend content
 #find . -type f -name 'Makefile*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
 #find . -type f -name 'libtool*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
@@ -224,7 +224,7 @@ export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
 export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
 export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
 export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
-%autogen  --enable-shared --enable-static --disable-man --disable-docs  --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+%autogen  --enable-shared --enable-static  --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 ## make_prepend content
 #find . -type f -name 'Makefile*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
 #find . -type f -name 'libtool*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
@@ -244,7 +244,7 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1602508516
+export SOURCE_DATE_EPOCH=1602699877
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

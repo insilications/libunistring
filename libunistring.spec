@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : libunistring
 Version  : 0.9.10
-Release  : 31
+Release  : 32
 URL      : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Source0  : file:///insilications/build/clearlinux/packages/libunistring/libunistring-0.9.10.tar.gz
 Summary  : Library to manipulate Unicode strings
@@ -103,7 +103,7 @@ staticdev components for the libunistring package.
 %package staticdev32
 Summary: staticdev32 components for the libunistring package.
 Group: Default
-Requires: libunistring-dev = %{version}-%{release}
+Requires: libunistring-dev32 = %{version}-%{release}
 
 %description staticdev32
 staticdev32 components for the libunistring package.
@@ -132,7 +132,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602699877
+export SOURCE_DATE_EPOCH=1610606642
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -170,9 +170,6 @@ export MAKEFLAGS=%{?_smp_mflags}
 # export CCACHE_SLOPPINESS=pch_defines,locale,time_macros
 # export CCACHE_DISABLE=1
 ## altflags_pgo end
-##
-%global _lto_cflags 1
-##
 export CFLAGS="${CFLAGS_GENERATE}"
 export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
@@ -202,19 +199,9 @@ export LDFLAGS="${LDFLAGS_USE}"
 make  %{?_smp_mflags}  V=1 VERBOSE=1
 
 pushd ../build32/
-## build_prepend content
-#find . -type f -name 'configure*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#find . -type f -name '*.ac' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#find . -type f -name 'libtool*' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#find . -type f -name '*.m4' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#find . -type f -name '*.mk' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#find . -type f -name '*.sh' -exec sed -i 's/\-fPIC/\-fpic/g' {} \;
-#echo "AM_MAINTAINER_MODE([disable])" >> configure.ac
-#find . -type f -name 'config.status' -exec touch {} \;
-## build_prepend end
-export CFLAGS="-g -O2 -fuse-linker-plugin -pipe"
-export CXXFLAGS="-g -O2 -fuse-linker-plugin -fvisibility-inlines-hidden -pipe"
-export LDFLAGS="-g -O2 -fuse-linker-plugin -pipe"
+export CFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
+export CXXFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
+export LDFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -244,7 +231,7 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1602699877
+export SOURCE_DATE_EPOCH=1610606642
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32

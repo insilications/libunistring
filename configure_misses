@@ -1,9 +1,9 @@
 Configure miss: whether the compiler is clang
 Configure miss: compiler option needed when checking for declarations
+Configure miss: crtdefs.h
 Configure miss: windres
 Configure miss: __fseterr
 Configure miss: pthread_sigmask
-Configure miss: crtdefs.h
 Configure miss: 32-bit host C ABI
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: fake locale system (OpenBSD)
@@ -14,8 +14,6 @@ Configure miss: library needed for semaphore functions
 Configure miss: strerror_r with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: whether mbrtowc stores incomplete characters
-Configure miss: sys/single_threaded.h usability
-Configure miss: sys/single_threaded.h presence
 Configure miss: sys/single_threaded.h
 Configure miss: ioctl with POSIX signature
 Configure miss: working nanosleep
@@ -23,10 +21,10 @@ Configure miss: whether pthread_sigmask is a macro
 Configure miss: a traditional Arabic locale
 Configure miss: whether the compiler is clang
 Configure miss: compiler option needed when checking for declarations
+Configure miss: crtdefs.h
 Configure miss: windres
 Configure miss: __fseterr
 Configure miss: pthread_sigmask
-Configure miss: crtdefs.h
 Configure miss: 32-bit host C ABI
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: fake locale system (OpenBSD)
@@ -37,8 +35,6 @@ Configure miss: library needed for semaphore functions
 Configure miss: strerror_r with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: whether mbrtowc stores incomplete characters
-Configure miss: sys/single_threaded.h usability
-Configure miss: sys/single_threaded.h presence
 Configure miss: sys/single_threaded.h
 Configure miss: ioctl with POSIX signature
 Configure miss: working nanosleep
@@ -46,11 +42,11 @@ Configure miss: whether pthread_sigmask is a macro
 Configure miss: a traditional Arabic locale
 Configure miss: whether the compiler is clang
 Configure miss: compiler option needed when checking for declarations
+Configure miss: crtdefs.h
 Configure miss: i686-generic-linux-gnu-windres
 Configure miss: windres
 Configure miss: __fseterr
 Configure miss: pthread_sigmask
-Configure miss: crtdefs.h
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: fake locale system (OpenBSD)
 Configure miss: Solaris 11.4 locale system
@@ -60,8 +56,6 @@ Configure miss: library needed for semaphore functions
 Configure miss: strerror_r with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: whether mbrtowc stores incomplete characters
-Configure miss: sys/single_threaded.h usability
-Configure miss: sys/single_threaded.h presence
 Configure miss: sys/single_threaded.h
 Configure miss: whether INT64_MAX == LONG_MAX
 Configure miss: whether UINT64_MAX == ULONG_MAX
